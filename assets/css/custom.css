@@ -3,22 +3,13 @@ i[class^="devicon-"] {
 }
 
 #techCircle {
-  /* background-image: url("/images/pic02.jpg"); */
-  /* background-position: center; */
-  /* background-size: cover; */
-  /* background-image: url("images/pic02.jpg") !important;
-  background-repeat: no-repeat; */
-  /* width: 100%; */
-  /* height: 100%; */
-  /* border-radius: 100%;
-  width: 19em; */
-  /* background-color: red; */
-  /* height: 100%; */
+  background-image: url("/images/pic02.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
       /* the following one worked, but not on all browsers */
-  /* aspect-ratio: 1; */
-  /* margin: 0;
-  padding: 0; */
-  /* vertical-align: center; */
+      /* okay, MDN says it works on everything I care about, and that's all I care about */
+      aspect-ratio: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,35 +17,4 @@ i[class^="devicon-"] {
 
 #techThing {
   font-size: 14vw;
-  /* text-align: center; */
-  /* vertical-align: middle; */
-  /* justify-items: center; */
-  /* align-content: center; */
-  /* z-index: 2; */
 }
-
-/* @media screen and (max-width: 980px) { */
-  /* #techCircle { */
-    /* width: 32em; */
-    /* height: 20em; */
-  /* } */
-/* } */
-
-/* #techCircle { */
-  /* border-radius: 100%; */
-  /* margin: 0 3em 2em 0; */
-  /* height: 14em; */
-  /* overflow: hidden; */
-  /* -ms-flex: 1; */
-/* } */
-
-.techBg {
-  /* position: float; */
-  /* z-index: 0; */
-}
-
-/* .techBg, #techThing {
-  position: absolute;
-  top: 0;
-  left: 0;
-} */
