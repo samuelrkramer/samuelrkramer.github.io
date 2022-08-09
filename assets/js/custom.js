@@ -1,5 +1,7 @@
 console.log("test, custom is loaded");
 
+const body = document.body;
+
 const listenProjs = () => {
   console.log("listenProjs fired");
   const projLinks = document.querySelectorAll('.projLink');
@@ -12,13 +14,15 @@ const listenProjs = () => {
 const projClickHandler = url => {
   return async e => {
     e.preventDefault();
-    console.log("projClickHandler fired for url", url)
+    console.log("projClickHandler fired for url", url);
+    body.classList.add('is-modal-visible');
     // console.log(e.target);
     // console.log(url);
     const apiUrl = `${url}api/wakeup`
     console.log("sending fetch to", apiUrl, Date.now());
     const res = await fetch(apiUrl);
     console.log("got something back maybe? idk, we're doing it live", Date.now())
+    body.classList.remove('is-modal-visible');
   }
 }
 
