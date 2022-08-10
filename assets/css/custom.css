@@ -29,3 +29,9 @@ nav#modal {
   visibility: hidden;
   display: none;
 }
+
+.tooltip {
+  color: #ffffff;
+  border-bottom: dotted 1px rgba(255, 255, 255, 0.35);
+  cursor: help;
+}

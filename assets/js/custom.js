@@ -14,14 +14,7 @@ const listenProjs = () => {
   }
 }
 
-
 const projClickHandler = url => {
-  // const hideModal = () => {
-    //   console.log("body click")
-  //   body.classList.remove('is-modal-visible')
-  //   console.log("modal class unset");
-  // }
-  
   return async e => {
     e.preventDefault();
     console.log("projClickHandler fired for url", url);
@@ -37,7 +30,6 @@ const projClickHandler = url => {
         clearInterval(interval);
       }
     }, 250)
-    // body.addEventListener("click", hideModal, {once: true});
     // console.log(e.target);
     // console.log(url);
     const apiUrl = `${url}api/wakeup`
@@ -45,7 +37,11 @@ const projClickHandler = url => {
     const res = await fetch(apiUrl, {mode: 'no-cors'});
     // console.log("got fetch back", Date.now())
     if (body.classList.contains("is-menu-visible")) {
-      window.open(url, "_blank");
+      let newTab = window.open(url, "_blank");
+      if (!newTab || newTab.closed || typeof newTab.closed=="undefined") {
+        // console.log("popup blocker detected", Date.now());
+        window.location.href = url;
+      }
     }
     body.classList.remove('is-menu-visible');
     menu.innerHTML = menuContents;
