@@ -2,7 +2,7 @@
 
 const body = document.body;
 const menu = document.getElementById("menu");
-const projLink = document.getElementById("projLink");
+const modalLink = document.getElementById("modalLink");
 const menuContents = menu.innerHTML;
 
 const listenProjs = () => {
@@ -18,7 +18,7 @@ const projClickHandler = url => {
   return async e => {
     e.preventDefault();
     console.log("projClickHandler fired for url", url);
-    projLink.href = url;
+    modalLink.href = url;
     const modalContents = document.getElementById("modal").innerHTML;
     menu.innerHTML = modalContents;
     body.classList.add('is-menu-visible');
