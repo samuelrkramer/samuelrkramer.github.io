@@ -34,7 +34,7 @@ const projClickHandler = url => {
     // console.log(url);
     const apiUrl = `${url}api/wakeup`
     console.log("sending fetch to", apiUrl, Date.now());
-    const res = await fetch(apiUrl);
+    const res = await fetch(apiUrl, {mode: 'no-cors'});
     console.log("got something back maybe? idk, we're doing it live", Date.now())
     if (body.classList.contains("is-menu-visible")) {
       window.open(url, "_blank");
