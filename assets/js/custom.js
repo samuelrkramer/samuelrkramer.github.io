@@ -29,6 +29,14 @@ const projClickHandler = url => {
     const modalContents = document.getElementById("modal").innerHTML;
     menu.innerHTML = modalContents;
     body.classList.add('is-menu-visible');
+    const interval = setInterval(() => {
+      // console.log("interval checking for closed modal")
+      if (!body.classList.contains("is-menu-visible")) {
+        // console.log("modal closed!");
+        menu.innerHTML = menuContents;
+        clearInterval(interval);
+      }
+    }, 250)
     // body.addEventListener("click", hideModal, {once: true});
     // console.log(e.target);
     // console.log(url);
@@ -41,6 +49,7 @@ const projClickHandler = url => {
     }
     body.classList.remove('is-menu-visible');
     menu.innerHTML = menuContents;
+    clearInterval(interval);
   }
 }
 
