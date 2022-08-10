@@ -19,11 +19,12 @@ i[class^="devicon-"] {
   font-size: 14vw;
 }
 
-/* nav#modal { */
-  /* visibility: hidden; */
-/* } */
+nav#modal {
+  visibility: hidden;
+  display: none;
+}
 
-#modal {
+/* #modal {
   -moz-align-items: center;
   -webkit-align-items: center;
   -ms-align-items: center;
@@ -134,4 +135,4 @@ i[class^="devicon-"] {
 			-ms-transform: translateY(0);
 			transform: translateY(0);
 			opacity: 1;
-		}
+		} */
