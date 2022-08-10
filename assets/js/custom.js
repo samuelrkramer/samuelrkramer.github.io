@@ -33,9 +33,12 @@ const projClickHandler = url => {
     // console.log(e.target);
     // console.log(url);
     const apiUrl = `${url}api/wakeup`
-    // console.log("sending fetch to", apiUrl, Date.now());
+    // const time1 = Date.now();
+    // console.log("sending fetch to", apiUrl, time1);
     const res = await fetch(apiUrl, {mode: 'no-cors'});
-    // console.log("got fetch back", Date.now())
+    // const time2 = Date.now();
+    // console.log("got fetch back", time2)
+    // console.log("took", (time2-time1), "ms")
     if (body.classList.contains("is-menu-visible")) {
       let newTab = window.open(url, "_blank");
       if (!newTab || newTab.closed || typeof newTab.closed=="undefined") {
