@@ -11,6 +11,7 @@ const listenProjs = () => {
   for (let el of projLinks) {
     // console.log(el);
     el.addEventListener("click", projClickHandler(el.href));
+    fetch(`${el.href}api/wakeup`, {mode: 'no-cors'}); //wake them all up now
   }
 }
 
