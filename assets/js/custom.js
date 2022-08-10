@@ -1,4 +1,4 @@
-console.log("test, custom is loaded");
+// console.log("test, custom is loaded");
 
 const body = document.body;
 const menu = document.getElementById("menu");
@@ -6,7 +6,7 @@ const projLink = document.getElementById("projLink");
 const menuContents = menu.innerHTML;
 
 const listenProjs = () => {
-  console.log("listenProjs fired");
+  // console.log("listenProjs fired");
   const projLinks = document.querySelectorAll('.projLink');
   for (let el of projLinks) {
     // console.log(el);
@@ -41,9 +41,9 @@ const projClickHandler = url => {
     // console.log(e.target);
     // console.log(url);
     const apiUrl = `${url}api/wakeup`
-    console.log("sending fetch to", apiUrl, Date.now());
+    // console.log("sending fetch to", apiUrl, Date.now());
     const res = await fetch(apiUrl, {mode: 'no-cors'});
-    console.log("got something back maybe? idk, we're doing it live", Date.now())
+    // console.log("got fetch back", Date.now())
     if (body.classList.contains("is-menu-visible")) {
       window.open(url, "_blank");
     }
