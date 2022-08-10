@@ -19,6 +19,12 @@ i[class^="devicon-"] {
   font-size: 14vw;
 }
 
+.modalImg {
+  position: relative;
+  top: -18px;
+  width: 100%;
+}
+
 nav#modal {
   visibility: hidden;
   display: none;
