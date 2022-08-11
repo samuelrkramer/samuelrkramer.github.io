@@ -13,12 +13,20 @@ const listenProjs = () => {
     el.addEventListener("click", projClickHandler(el.href));
     fetch(`${el.href}api/wakeup`, {mode: 'no-cors'}); //wake them all up now
   }
+
+  const modalPlease = document.getElementById("modalPlease");
+  modalPlease.addEventListener("click", e => {
+    e.preventDefault();
+    window.alert("Okay, but you have to close it manually! It's not doing anything this time");
+    menu.innerHTML = document.getElementById("modal").innerHTML;
+    body.classList.add("is-menu-visible");
+  });
 }
 
 const projClickHandler = url => {
   return async e => {
     e.preventDefault();
-    console.log("projClickHandler fired for url", url);
+    // console.log("projClickHandler fired for url", url);
     modalLink.href = url;
     const modalContents = document.getElementById("modal").innerHTML;
     menu.innerHTML = modalContents;
