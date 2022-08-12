@@ -25,8 +25,20 @@ const listenProjs = () => {
     window.alert("Okay, but you have to close it manually! It's not doing anything this time");
     menu.innerHTML = document.getElementById("modal").innerHTML;
     body.classList.add("is-menu-visible");
+    const interval = setInterval(() => {
+      // console.log("interval checking for closed modal")
+      if (!body.classList.contains("is-menu-visible")) {
+        // console.log("modal closed!");
+        modalClosed(interval);
+      }
+    }, 250);
   });
 }
+
+const modalClosed = interval => {
+  menu.innerHTML = menuContents;
+  clearInterval(interval);
+};
 
 const projClickHandler = url => {
   return async e => {
@@ -40,10 +52,9 @@ const projClickHandler = url => {
       // console.log("interval checking for closed modal")
       if (!body.classList.contains("is-menu-visible")) {
         // console.log("modal closed!");
-        menu.innerHTML = menuContents;
-        clearInterval(interval);
+        modalClosed(interval);
       }
-    }, 250)
+    }, 250);
     // console.log(e.target);
     // console.log(url);
     const apiUrl = `${url}api/wakeup`
@@ -61,8 +72,7 @@ const projClickHandler = url => {
       }
     }
     body.classList.remove('is-menu-visible');
-    menu.innerHTML = menuContents;
-    clearInterval(interval);
+    modalClosed(interval);
   }
 }
 
