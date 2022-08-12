@@ -1,6 +1,7 @@
 // console.log("test, custom is loaded");
 
 const body = document.body;
+const params = new URLSearchParams(window.location.search.toLowerCase());
 const menu = document.getElementById("menu");
 const modalLink = document.getElementById("modalLink");
 const menuContents = menu.innerHTML;
@@ -11,7 +12,11 @@ const listenProjs = () => {
   for (let el of projLinks) {
     // console.log(el);
     el.addEventListener("click", projClickHandler(el.href));
-    fetch(`${el.href}api/wakeup`, {mode: 'no-cors'}); //wake them all up now
+    // console.log(params.get('nowake'), typeof(params.get('nowake')))
+    if (!params.get('nowake')) {
+      // console.log('nowake falsy')
+      fetch(`${el.href}api/wakeup`, {mode: 'no-cors'}); //wake them all up now
+    }
   }
 
   const modalPlease = document.getElementById("modalPlease");
