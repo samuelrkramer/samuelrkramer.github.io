@@ -13,7 +13,8 @@ const listenProjs = () => {
     // console.log(el);
     el.addEventListener("click", projClickHandler(el.href));
     // console.log(params.get('nowake'), typeof(params.get('nowake')))
-    if (!params.get('nowake')) {
+    if ((window.location.hostname.startsWith("sam") && !params.get('nowake')) || params.get('wake')) {
+      // // only send automatic wakeup on production, but dev can do it with ?wake=truthy
       // console.log('nowake falsy')
       fetch(`${el.href}api/wakeup`, {mode: 'no-cors'}); //wake them all up now
     }
