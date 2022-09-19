@@ -6,8 +6,8 @@ const menu = document.getElementById("menu");
 const modalLink = document.getElementById("modalLink");
 const menuContents = menu.innerHTML;
 
-const listenProjs = () => {
-  // console.log("listenProjs fired");
+const autoRun = () => {
+  // console.log("autoRun fired");
   const projLinks = document.querySelectorAll('.projLink');
   for (let el of projLinks) {
     // console.log(el);
@@ -34,6 +34,13 @@ const listenProjs = () => {
       }
     }, 250);
   });
+
+  const techHeader = document.getElementById("techHeader");
+  const techCircle = document.getElementById("techCircle");
+  const techList = document.getElementById("techList");
+  for (let el of techList.children) {
+    console.log(el.classList.toString());
+  }
 }
 
 const modalClosed = interval => {
@@ -77,4 +84,4 @@ const projClickHandler = url => {
   }
 }
 
-listenProjs();
+autoRun();
