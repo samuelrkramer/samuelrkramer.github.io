@@ -16,7 +16,7 @@ const autoRun = () => {
     if ((window.location.hostname.startsWith("sam") && !params.get('nowake')) || params.get('wake')) {
       // // only send automatic wakeup on production, but dev can do it with ?wake=truthy
       // console.log('nowake falsy')
-      fetch(`${el.href}api/wakeup`, {mode: 'no-cors'}); //wake them all up now
+      fetch(`${el.href}api/wakeup/skport`, {mode: 'no-cors'}); //wake them all up now
     }
   }
 
