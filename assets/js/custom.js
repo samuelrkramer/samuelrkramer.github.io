@@ -65,7 +65,7 @@ const projClickHandler = url => {
     }, 250);
     // console.log(e.target);
     // console.log(url);
-    const apiUrl = `${url}api/wakeup`
+    const apiUrl = `${url}api/wakeup/skport-click`
     // const time1 = Date.now();
     // console.log("sending fetch to", apiUrl, time1);
     const res = await fetch(apiUrl, {mode: 'no-cors'});
