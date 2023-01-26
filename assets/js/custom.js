@@ -39,10 +39,10 @@ const autoRun = () => {
   const techCircle = document.getElementById("techCircle");
   const techThing = document.getElementById("techThing");
   const techList = document.getElementById("techList");
+  const oldClass = techThing.classList.toString();
   for (let el of techList.children) {
     // console.log(el.classList.toString());
     // console.log(el.dataset.hover);
-    const oldClass = techThing.classList.toString();
     // console.log({
     //   smIcon: el.classList.toString(),
     //   bigIcon: el.dataset.hover,
@@ -51,9 +51,10 @@ const autoRun = () => {
     const hover = el.addEventListener("mouseover", e => {
       techThing.classList = el.dataset.hover;
     });
-    
-    
   }
+  const leaveTech = techList.addEventListener("mouseleave", e => {
+    techThing.classList = oldClass;
+  });
 }
 
 const modalClosed = interval => {
