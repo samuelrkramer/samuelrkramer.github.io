@@ -37,9 +37,18 @@ const autoRun = () => {
 
   const techHeader = document.getElementById("techHeader");
   const techCircle = document.getElementById("techCircle");
+  const techThing = document.getElementById("techThing");
   const techList = document.getElementById("techList");
   for (let el of techList.children) {
-    console.log(el.classList.toString());
+    // console.log(el.classList.toString());
+    // console.log(el.dataset.hover);
+    const oldClass = techThing.classList.toString();
+    console.log({
+      smIcon: el.classList.toString(),
+      bigIcon: el.dataset.hover,
+      oldClass,
+    });
+    
   }
 }
 
