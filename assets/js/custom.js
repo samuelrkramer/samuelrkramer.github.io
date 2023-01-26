@@ -43,11 +43,15 @@ const autoRun = () => {
     // console.log(el.classList.toString());
     // console.log(el.dataset.hover);
     const oldClass = techThing.classList.toString();
-    console.log({
-      smIcon: el.classList.toString(),
-      bigIcon: el.dataset.hover,
-      oldClass,
+    // console.log({
+    //   smIcon: el.classList.toString(),
+    //   bigIcon: el.dataset.hover,
+    //   oldClass,
+    // });
+    const hover = el.addEventListener("mouseover", e => {
+      techThing.classList = el.dataset.hover;
     });
+    
     
   }
 }
