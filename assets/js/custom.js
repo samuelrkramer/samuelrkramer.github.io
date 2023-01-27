@@ -50,11 +50,12 @@ const autoRun = () => {
     //   bigIcon: el.dataset.hover,
     //   oldClass,
     // });
-    const hover = el.addEventListener("mouseover", e => {
+    const changeTech = e => {
       techThing.classList = el.dataset.hover;
       // console.log(techThing.nextSibling.data = "<br/>"+el.title);
       techHeader.innerText = el.title;
-    });
+    }
+    const hover = el.addEventListener("mouseover", changeTech);
   }
   const leaveTech = techList.addEventListener("mouseleave", e => {
     techThing.classList = oldClass;
