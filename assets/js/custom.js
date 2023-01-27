@@ -6,8 +6,8 @@ const menu = document.getElementById("menu");
 const modalLink = document.getElementById("modalLink");
 const menuContents = menu.innerHTML;
 
-const listenProjs = () => {
-  // console.log("listenProjs fired");
+const autoRun = () => {
+  // console.log("autoRun fired");
   const projLinks = document.querySelectorAll('.projLink');
   for (let el of projLinks) {
     // console.log(el);
@@ -33,6 +33,33 @@ const listenProjs = () => {
         modalClosed(interval);
       }
     }, 250);
+  });
+
+  const techHeader = document.getElementById("techHeader");
+  const techCircle = document.getElementById("techCircle");
+  const techThing = document.getElementById("techThing");
+  const techList = document.getElementById("techList");
+  const oldClass = techThing.classList.toString();
+  // const oldText = techThing.nextSibling.data;
+  const oldText = techHeader.innerText;
+  for (let el of techList.children) {
+    // console.log(el.classList.toString());
+    // console.log(el.dataset.hover);
+    // console.log({
+    //   smIcon: el.classList.toString(),
+    //   bigIcon: el.dataset.hover,
+    //   oldClass,
+    // });
+    const hover = el.addEventListener("mouseover", e => {
+      techThing.classList = el.dataset.hover;
+      // console.log(techThing.nextSibling.data = "<br/>"+el.title);
+      techHeader.innerText = el.title;
+    });
+  }
+  const leaveTech = techList.addEventListener("mouseleave", e => {
+    techThing.classList = oldClass;
+    // techThing.nextSibling.data = oldText;
+    techHeader.innerText = oldText;
   });
 }
 
@@ -77,4 +104,4 @@ const projClickHandler = url => {
   }
 }
 
-listenProjs();
+autoRun();
