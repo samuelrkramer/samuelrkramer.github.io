@@ -56,6 +56,7 @@ const autoRun = () => {
       techHeader.innerText = el.title;
     }
     const hover = el.addEventListener("mouseover", changeTech);
+    const click = el.addEventListener("click", changeTech);
   }
   const leaveTech = techList.addEventListener("mouseleave", e => {
     techThing.classList = oldClass;
