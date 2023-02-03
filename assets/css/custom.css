@@ -39,6 +39,7 @@ i[class^="devicon-"] {
 
 #techList {
   border-radius: 8px;
+  transition: background-color 0.2s ease-in-out;
 }
 
 #techList:hover {
