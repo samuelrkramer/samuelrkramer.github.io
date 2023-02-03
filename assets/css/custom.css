@@ -48,13 +48,6 @@ i[class^="devicon-"] {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
-.features article:hover {
-  transition: background-color 0.2s ease-in-out;
-}
-.features article:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
 .modalImg {
   position: relative;
   top: -18px;
