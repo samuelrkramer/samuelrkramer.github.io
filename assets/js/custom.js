@@ -7,15 +7,12 @@ const modalLink = document.getElementById("modalLink");
 const menuContents = menu.innerHTML;
 
 const autoRun = () => {
-  // console.log("autoRun fired");
-  const projLinks = document.querySelectorAll('.projLink');
+  const projLinks = document.querySelectorAll('.projLink'); // select all project links
   for (let el of projLinks) {
-    // console.log(el);
-    el.addEventListener("click", projClickHandler(el.href));
-    // console.log(params.get('nowake'), typeof(params.get('nowake')))
+    el.addEventListener("click", projClickHandler(el.href)); // attach handler to click event for each link
+
     if ((window.location.hostname.startsWith("sam") && !params.get('nowake')) || params.get('wake')) {
-      // // only send automatic wakeup on production, but dev can do it with ?wake=truthy
-      // console.log('nowake falsy')
+      // only send automatic wakeup on production, but dev can do it with ?wake=truthy
       fetch(`${el.href}api/wakeup/skport`, {mode: 'no-cors'}); //wake them all up now
     }
   }
@@ -27,9 +24,7 @@ const autoRun = () => {
     menu.innerHTML = document.getElementById("modal").innerHTML;
     body.classList.add("is-menu-visible");
     const interval = setInterval(() => {
-      // console.log("interval checking for closed modal")
       if (!body.classList.contains("is-menu-visible")) {
-        // console.log("modal closed!");
         modalClosed(interval);
       }
     }, 250);
@@ -65,7 +60,7 @@ const autoRun = () => {
   });
 }
 
-const modalClosed = interval => {
+const modalClosed = interval => { // restores template modal and clears timer set for this purpose
   menu.innerHTML = menuContents;
   clearInterval(interval);
 };
