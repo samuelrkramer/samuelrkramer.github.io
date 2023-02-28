@@ -35,19 +35,10 @@ const autoRun = () => {
   const techThing = document.getElementById("techThing");
   const techList = document.getElementById("techList");
   const oldClass = techThing.classList.toString();
-  // const oldText = techThing.nextSibling.data;
   const oldText = techHeader.innerText;
   for (let el of techList.children) {
-    // console.log(el.classList.toString());
-    // console.log(el.dataset.hover);
-    // console.log({
-    //   smIcon: el.classList.toString(),
-    //   bigIcon: el.dataset.hover,
-    //   oldClass,
-    // });
     const changeTech = e => {
       techThing.classList = el.dataset.hover;
-      // console.log(techThing.nextSibling.data = "<br/>"+el.title);
       techHeader.innerText = el.title;
     }
     const hover = el.addEventListener("mouseover", changeTech);
@@ -55,7 +46,6 @@ const autoRun = () => {
   }
   const leaveTech = techList.addEventListener("mouseleave", e => {
     techThing.classList = oldClass;
-    // techThing.nextSibling.data = oldText;
     techHeader.innerText = oldText;
   });
 }
