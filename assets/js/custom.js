@@ -33,18 +33,18 @@ const autoRun = () => {
   const techHeader = document.getElementById("techHeader");
   const techCircle = document.getElementById("techCircle");
   const techThing = document.getElementById("techThing");
-  const techList = document.getElementById("techList");
-  const oldClass = techThing.classList.toString();
-  const oldText = techHeader.innerText;
+  const oldClass = techThing.classList.toString(); // save default tech icon
+  const oldText = techHeader.innerText; // save default tech header
+  const techList = document.getElementById("techList"); // select the techlist
   for (let el of techList.children) {
-    const changeTech = e => {
-      techThing.classList = el.dataset.hover;
-      techHeader.innerText = el.title;
+    const changeTech = e => { // custom handler for each tech item
+      techThing.classList = el.dataset.hover; // use classlist data attached in html to each tech item
+      techHeader.innerText = el.title; // change title to match tech item
     }
-    const hover = el.addEventListener("mouseover", changeTech);
-    const click = el.addEventListener("click", changeTech);
+    const hover = el.addEventListener("mouseover", changeTech); // attach hover handler for desktops
+    const click = el.addEventListener("click", changeTech); // attach click handler for mobile
   }
-  const leaveTech = techList.addEventListener("mouseleave", e => {
+  const leaveTech = techList.addEventListener("mouseleave", e => { // and attach undo handler for leaving the whole techlist area
     techThing.classList = oldClass;
     techHeader.innerText = oldText;
   });
