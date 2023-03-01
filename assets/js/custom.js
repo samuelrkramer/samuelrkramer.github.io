@@ -50,8 +50,9 @@ const autoRun = () => {
   });
 }
 
-const modalClosed = interval => { // restores template modal and clears timer set for this purpose
+const modalClosed = (interval, time=0) => { // restores template modal and clears timer set for this purpose
   menu.innerHTML = menuContents;
+  body.classList.remove(time); // destroy uniqueness of modal
   clearInterval(interval);
 };
 
@@ -62,20 +63,25 @@ const projClickHandler = url => {
     const modalContents = document.getElementById("modal").innerHTML;
     menu.innerHTML = modalContents; // replace template's modal with custom modal
     body.classList.add('is-menu-visible'); // show modal
+    const time = Date.now();
+    body.classList.add(time); // unique imprint on each modal to avoid hijacking the wrong one
+    console.log(body.classList)
     const interval = setInterval(() => {
       if (!body.classList.contains("is-menu-visible")) { // restore template modal once the custom one is closed
-        modalClosed(interval);
+        modalClosed(interval, time);
       }
     }, 250);
     const apiUrl = `${url}api/wakeup/skport-click`; // build target URL for wakeup fetch, doesn't matter if real
     // here's the magic:
     const res = await fetch(apiUrl, {mode: 'no-cors'}); // fetch to api, and wait until target is certainly awake
-    if (body.classList.contains("is-menu-visible")) { // make sure the user hasn't closed the modal before opening target
+    // make sure the user hasn't closed the unique modal before opening target
+    if (body.classList.contains("is-menu-visible") && body.classList.contains(time)) {
       let newTab = window.open(url, "_blank"); // attempt new tab
       if (!newTab || newTab.closed || typeof newTab.closed=="undefined") { // detect popup blocking
         window.location.href = url; // redirect current tab if new tab is blocked as popup
       }
     }
+    body.classList.remove(time); // destroy uniqueness of modal
     body.classList.remove('is-menu-visible'); // close modal because the target project is already open
     modalClosed(interval); // restore template modal
   }
