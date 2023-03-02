@@ -80,6 +80,8 @@ const projClickHandler = url => {
       if (!newTab || newTab.closed || typeof newTab.closed=="undefined") { // detect popup blocking
         window.location.href = url; // redirect current tab if new tab is blocked as popup
       }
+    } else {
+      return; // if the unique modal was closed, stop doing anything
     }
     body.classList.remove(time); // destroy uniqueness of modal
     body.classList.remove('is-menu-visible'); // close modal because the target project is already open
