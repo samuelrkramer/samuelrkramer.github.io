@@ -19,7 +19,8 @@ const autoRun = () => {
 
   if (params.get('modalfor')) {
     const forUrl = params.get('modalfor');
-    
+    const launcher = projClickHandler(forUrl);
+    launcher();
   }
 
   const modalPlease = document.getElementById("modalPlease");
