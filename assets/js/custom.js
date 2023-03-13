@@ -18,7 +18,7 @@ const autoRun = () => {
   }
 
   if (params.get('modalfor')) {
-    const forurl = params.get('modalfor');
+    const forUrl = params.get('modalfor');
     
   }
 
