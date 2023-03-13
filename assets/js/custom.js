@@ -17,6 +17,11 @@ const autoRun = () => {
     }
   }
 
+  if (params.get('modalfor')) {
+    const forurl = params.get('modalfor');
+    
+  }
+
   const modalPlease = document.getElementById("modalPlease");
   modalPlease.addEventListener("click", e => {
     e.preventDefault();
