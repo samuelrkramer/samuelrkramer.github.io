@@ -19,7 +19,9 @@ const autoRun = () => {
 
   if (params.get('modalfor')) {
     const forUrl = params.get('modalfor');
+    console.log("modalfor detected:", forUrl)
     const launcher = projClickHandler(forUrl);
+    console.log(launcher)
     launcher();
   }
 
@@ -62,6 +64,7 @@ const modalClosed = interval => { // restores template modal and clears timer se
 };
 
 const projClickHandler = url => {
+  console.log("building clickhandler for",url)
   return async e => {
     e.preventDefault(); // intercept click on project link
     modalLink.href = url;
