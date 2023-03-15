@@ -22,7 +22,7 @@ const autoRun = () => {
     console.log("modalfor detected:", forUrl)
     const launcher = projClickHandler(forUrl);
     console.log(launcher)
-    launcher({preventDefault: () => return});
+    launcher({preventDefault: () => console.log("hijacked prevent default!")});
   }
 
   const modalPlease = document.getElementById("modalPlease");
