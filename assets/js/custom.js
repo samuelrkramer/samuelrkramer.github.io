@@ -22,7 +22,7 @@ const autoRun = () => {
     console.log("modalfor detected:", forUrl)
     const launcher = projClickHandler(forUrl);
     console.log(launcher)
-    launcher();
+    launcher({preventDefault: () => return});
   }
 
   const modalPlease = document.getElementById("modalPlease");
