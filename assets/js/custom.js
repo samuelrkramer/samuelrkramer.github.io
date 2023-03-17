@@ -64,7 +64,7 @@ const modalClosed = interval => { // restores template modal and clears timer se
 };
 
 const projClickHandler = url => {
-  console.log("building clickhandler for",url)
+  // console.log("building clickhandler for",url)
   return async e => {
     e.preventDefault(); // intercept click on project link
     modalLink.href = url;
