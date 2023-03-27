@@ -2,6 +2,7 @@
 
 const body = document.body;
 const params = new URLSearchParams(window.location.search.toLowerCase());
+const noWake = params.get('nowake');
 const menu = document.getElementById("menu");
 const modalLink = document.getElementById("modalLink");
 const menuContents = menu.innerHTML;
@@ -11,12 +12,12 @@ const autoRun = () => {
   for (let el of projLinks) {
     el.addEventListener("click", projClickHandler(el.href)); // attach handler to click event for each link
 
-    if ((window.location.hostname.startsWith("sam") && !params.get('nowake')) || params.get('wake')) {
+    if ((window.location.hostname.startsWith("sam") && !noWake) || params.get('wake')) {
       // only send automatic wakeup on production, but dev can do it with ?wake=truthy
       fetch(`${el.href}api/wakeup/skport`, {mode: 'no-cors'}); //wake them all up now
     }
   }
-
+  console.log(noWake, typeof(noWake), !!noWake);
   if (params.get('modalfor')) { // look for a ?modalfor=url parameter
     const forUrl = params.get('modalfor'); // save that parameter's value
     // console.log("modalfor detected:", forUrl)
@@ -80,7 +81,9 @@ const projClickHandler = url => {
     }, 250);
     const apiUrl = `${url}api/wakeup/skport-click`; // build target URL for wakeup fetch, doesn't matter if real
     // here's the magic:
-    const res = await fetch(apiUrl, {mode: 'no-cors'}); // fetch to api, and wait until target is certainly awake
+    // const res = await fetch(apiUrl, {mode: 'no-cors'}); // fetch to api, and wait until target is certainly awake
+    if (noWake) url += `?nowake=${noWake}`;
+    console.log("added nowake:", url);
     if (body.classList.contains("is-menu-visible")) { // make sure the user hasn't closed the modal before opening target
       let newTab = window.open(url, "_blank"); // attempt new tab
       if (!newTab || newTab.closed || typeof newTab.closed=="undefined") { // detect popup blocking
