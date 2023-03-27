@@ -17,7 +17,7 @@ const autoRun = () => {
       fetch(`${el.href}api/wakeup/skport`, {mode: 'no-cors'}); //wake them all up now
     }
   }
-  console.log(noWake, typeof(noWake), !!noWake);
+  // console.log(noWake, typeof(noWake), !!noWake);
   if (params.get('modalfor')) { // look for a ?modalfor=url parameter
     const forUrl = params.get('modalfor'); // save that parameter's value
     // console.log("modalfor detected:", forUrl)
