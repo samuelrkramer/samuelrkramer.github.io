@@ -81,9 +81,9 @@ const projClickHandler = url => {
     }, 250);
     const apiUrl = `${url}api/wakeup/skport-click`; // build target URL for wakeup fetch, doesn't matter if real
     // here's the magic:
-    // const res = await fetch(apiUrl, {mode: 'no-cors'}); // fetch to api, and wait until target is certainly awake
+    const res = await fetch(apiUrl, {mode: 'no-cors'}); // fetch to api, and wait until target is certainly awake
     if (noWake) url += `?nowake=${noWake}`;
-    console.log("added nowake:", url);
+    // console.log("added nowake:", url);
     if (body.classList.contains("is-menu-visible")) { // make sure the user hasn't closed the modal before opening target
       let newTab = window.open(url, "_blank"); // attempt new tab
       if (!newTab || newTab.closed || typeof newTab.closed=="undefined") { // detect popup blocking
