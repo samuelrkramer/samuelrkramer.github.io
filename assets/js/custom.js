@@ -21,7 +21,8 @@ const autoRun = () => {
   if (params.get('modalfor')) { // look for a ?modalfor=url parameter
     const forUrl = params.get('modalfor'); // save that parameter's value
     const launcher = projClickHandler(forUrl); // generate a function to launch the modal
-    launcher({preventDefault: () => { // hijack the e.preventDefault() behavior that the launcher expects
+    launcher({preventDefault: () => {
+      // TO DO: e.preventDefault() behavior can be hijacked here with custom code
     }}); // launch the modal, with a dummy event so it doesn't error out
   }
 
