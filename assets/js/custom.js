@@ -17,14 +17,11 @@ const autoRun = () => {
       fetch(`${el.href}api/wakeup/skport`, {mode: 'no-cors'}); //wake them all up now
     }
   }
-  // console.log(noWake, typeof(noWake), !!noWake);
+
   if (params.get('modalfor')) { // look for a ?modalfor=url parameter
     const forUrl = params.get('modalfor'); // save that parameter's value
-    // console.log("modalfor detected:", forUrl)
     const launcher = projClickHandler(forUrl); // generate a function to launch the modal
-    // console.log(launcher)
     launcher({preventDefault: () => { // hijack the e.preventDefault() behavior that the launcher expects
-      // console.log("hijacked prevent default!");
     }}); // launch the modal, with a dummy event so it doesn't error out
   }
 
