@@ -83,7 +83,6 @@ const projClickHandler = url => {
     // here's the magic:
     const res = await fetch(apiUrl, {mode: 'no-cors'}); // fetch to api, and wait until target is certainly awake
     if (noWake) url += `?nowake=${noWake}`; // add in nowake for redirect if present
-    // console.log("added nowake:", url);
     if (body.classList.contains("is-menu-visible")) { // make sure the user hasn't closed the modal before opening target
       let newTab = window.open(url, "_blank"); // attempt new tab
       if (!newTab || newTab.closed || typeof newTab.closed=="undefined") { // detect popup blocking
