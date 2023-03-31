@@ -23,7 +23,7 @@ const autoRun = () => {
     // console.log("modalfor detected:", forUrl)
     const launcher = projClickHandler(forUrl); // generate a function to launch the modal
     // console.log(launcher)
-    launcher({preventDefault: () => {
+    launcher({preventDefault: () => { // hijack the e.preventDefault() behavior that the launcher expects
       // console.log("hijacked prevent default!");
     }}); // launch the modal, with a dummy event so it doesn't error out
   }
