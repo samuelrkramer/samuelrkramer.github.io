@@ -35,6 +35,7 @@ i[class^="devicon-"] {
 
 #techThing {
   font-size: 14vw;
+  transition: all 0.2s ease-in-out;
 }
 
 #techList {
