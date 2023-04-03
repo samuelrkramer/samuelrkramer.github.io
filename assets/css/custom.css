@@ -35,12 +35,12 @@ i[class^="devicon-"] {
 
 #techThing {
   font-size: 14vw;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.25s ease-in-out;
 }
 
 #techList {
   border-radius: 8px;
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color 0.25s ease-in-out;
 }
 
 #techList:hover {
