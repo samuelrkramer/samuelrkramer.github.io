@@ -67,12 +67,13 @@ const modalClosed = interval => { // restores template modal and clears timer se
 const projClickHandler = url => {
   return async e => {
     e.preventDefault(); // intercept click on project link
-    modalLink.href = url;
     const modalContents = document.getElementById("modal").innerHTML;
+    modalLink.href = url;
     menu.innerHTML = modalContents; // replace template's modal with custom modal
     body.classList.add('is-menu-visible'); // show modal
     const interval = setInterval(() => {
       if (!body.classList.contains("is-menu-visible")) { // restore template modal once the custom one is closed
+        document.getElementById("modal").innerHTML = modalContents;
         modalClosed(interval);
       }
     }, 250);
@@ -87,6 +88,7 @@ const projClickHandler = url => {
       }
     }
     body.classList.remove('is-menu-visible'); // close modal because the target project is already open
+    document.getElementById("modal").innerHTML = modalContents;
     modalClosed(interval); // restore template modal
   }
 }
