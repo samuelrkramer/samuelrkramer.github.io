@@ -6,6 +6,7 @@ const noWake = params.get('nowake');
 const menu = document.getElementById("menu");
 const menuContents = menu.innerHTML;
 const modal = document.getElementById("modal");
+const modalContents = modal.innerHTML;
 const modalLink = document.getElementById("modalLink");
 
 const autoRun = () => {
@@ -62,19 +63,18 @@ const autoRun = () => {
 
 const modalClosed = interval => { // restores template modal and clears timer set for this purpose
   menu.innerHTML = menuContents;
+  modal.innerHTML = modalContents;
   clearInterval(interval);
 };
 
 const projClickHandler = url => {
   return async e => {
     e.preventDefault(); // intercept click on project link
-    const modalContents = modal.innerHTML;
     modalLink.href = url;
     menu.innerHTML = modalContents; // replace template's modal with custom modal
     body.classList.add('is-menu-visible'); // show modal
     const interval = setInterval(() => {
       if (!body.classList.contains("is-menu-visible")) { // restore template modal once the custom one is closed
-        modal.innerHTML = modalContents;
         modalClosed(interval);
       }
     }, 250);
@@ -89,7 +89,6 @@ const projClickHandler = url => {
       }
     }
     body.classList.remove('is-menu-visible'); // close modal because the target project is already open
-    modal.innerHTML = modalContents;
     modalClosed(interval); // restore template modal
   }
 }
