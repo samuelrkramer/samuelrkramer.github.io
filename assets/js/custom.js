@@ -31,6 +31,7 @@ const autoRun = () => {
     e.preventDefault();
     window.alert("Okay, but you have to close it manually! It's not doing anything this time");
     menu.innerHTML = document.getElementById("modal").innerHTML;
+    menu.firstElementChild.style.width = "27em";
     body.classList.add("is-menu-visible");
     const interval = setInterval(() => {
       if (!body.classList.contains("is-menu-visible")) {
@@ -61,6 +62,7 @@ const autoRun = () => {
 
 const modalClosed = interval => { // restores template modal and clears timer set for this purpose
   menu.innerHTML = menuContents;
+  menu.firstElementChild.style.width = "";
   clearInterval(interval);
 };
 
