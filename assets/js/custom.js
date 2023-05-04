@@ -27,19 +27,8 @@ const autoRun = () => {
   }
 
   const modalPlease = document.getElementById("modalPlease");
-  modalPlease.addEventListener("click", projClickHandler());//e => {
-  //   e.preventDefault();
-  //   window.alert("Okay, but you have to close it manually! It's not doing anything this time");
-  //   menu.innerHTML = document.getElementById("modal").innerHTML;
-  //   menu.firstElementChild.style.width = "27em";
-  //   body.classList.add("is-menu-visible");
-  //   const interval = setInterval(() => {
-  //     if (!body.classList.contains("is-menu-visible")) {
-  //       modalClosed(interval);
-  //     }
-  //   }, 250);
-  // });
-
+  modalPlease.addEventListener("click", projClickHandler());
+  
   const techHeader = document.getElementById("techHeader");
   const techCircle = document.getElementById("techCircle");
   const techThing = document.getElementById("techThing");
