@@ -14,9 +14,12 @@ const autoRun = () => {
 
     if ((window.location.hostname.startsWith("sam") && !noWake) || params.get('wake')) {
       // only send automatic wakeup on production, but dev can do it with ?wake=truthy
-      fetch(`${el.href}api/wakeup/skport`, {mode: 'no-cors'}); //wake them all up now
+      fetch(`${el.href}api/wakeup/skport`, {mode: 'no-cors'}); // wake them all up now
     }
   }
+
+  const modalPlease = document.getElementById("modalPlease");
+  modalPlease.addEventListener("click", projClickHandler()); // attach an empty click handler for the plain modal
 
   if (params.get('modalfor')) { // look for a ?modalfor=url parameter
     const forUrl = params.get('modalfor'); // save that parameter's value
@@ -25,9 +28,6 @@ const autoRun = () => {
       // TO DO: e.preventDefault() behavior can be hijacked here with custom code
     }}); // launch the modal, with a dummy event so it doesn't error out
   }
-
-  const modalPlease = document.getElementById("modalPlease");
-  modalPlease.addEventListener("click", projClickHandler());
   
   const techHeader = document.getElementById("techHeader");
   const techCircle = document.getElementById("techCircle");
