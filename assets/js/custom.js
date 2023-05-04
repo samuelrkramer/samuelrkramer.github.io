@@ -72,6 +72,7 @@ const projClickHandler = url => {
     modalLink.href = url;
     const modalContents = document.getElementById("modal").innerHTML;
     menu.innerHTML = modalContents; // replace template's modal with custom modal
+    menu.firstElementChild.style.width = "27em";
     body.classList.add('is-menu-visible'); // show modal
     const interval = setInterval(() => {
       if (!body.classList.contains("is-menu-visible")) { // restore template modal once the custom one is closed
