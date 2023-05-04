@@ -27,18 +27,18 @@ const autoRun = () => {
   }
 
   const modalPlease = document.getElementById("modalPlease");
-  modalPlease.addEventListener("click", e => {
-    e.preventDefault();
-    window.alert("Okay, but you have to close it manually! It's not doing anything this time");
-    menu.innerHTML = document.getElementById("modal").innerHTML;
-    menu.firstElementChild.style.width = "27em";
-    body.classList.add("is-menu-visible");
-    const interval = setInterval(() => {
-      if (!body.classList.contains("is-menu-visible")) {
-        modalClosed(interval);
-      }
-    }, 250);
-  });
+  modalPlease.addEventListener("click", projClickHandler());//e => {
+  //   e.preventDefault();
+  //   window.alert("Okay, but you have to close it manually! It's not doing anything this time");
+  //   menu.innerHTML = document.getElementById("modal").innerHTML;
+  //   menu.firstElementChild.style.width = "27em";
+  //   body.classList.add("is-menu-visible");
+  //   const interval = setInterval(() => {
+  //     if (!body.classList.contains("is-menu-visible")) {
+  //       modalClosed(interval);
+  //     }
+  //   }, 250);
+  // });
 
   const techHeader = document.getElementById("techHeader");
   const techCircle = document.getElementById("techCircle");
@@ -69,7 +69,11 @@ const modalClosed = interval => { // restores template modal and clears timer se
 const projClickHandler = url => {
   return async e => {
     e.preventDefault(); // intercept click on project link
-    modalLink.href = url;
+    if (!url) {
+      window.alert("Okay, but you have to close it manually! It's not doing anything this time");
+    } else {
+      modalLink.href = url;
+    }
     const modalContents = document.getElementById("modal").innerHTML;
     menu.innerHTML = modalContents; // replace template's modal with custom modal
     menu.firstElementChild.style.width = "27em";
@@ -79,6 +83,7 @@ const projClickHandler = url => {
         modalClosed(interval);
       }
     }, 250);
+    if (!url) return;
     const apiUrl = `${url}api/wakeup/skport-click`; // build target URL for wakeup fetch, doesn't matter if real
     // here's the magic:
     const res = await fetch(apiUrl, {mode: 'no-cors'}); // fetch to api, and wait until target is certainly awake
