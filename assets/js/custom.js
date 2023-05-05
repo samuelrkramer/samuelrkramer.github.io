@@ -16,9 +16,12 @@ const autoRun = () => {
 
     if ((window.location.hostname.startsWith("sam") && !noWake) || params.get('wake')) {
       // only send automatic wakeup on production, but dev can do it with ?wake=truthy
-      fetch(`${el.href}api/wakeup/skport`, {mode: 'no-cors'}); //wake them all up now
+      fetch(`${el.href}api/wakeup/skport`, {mode: 'no-cors'}); // wake them all up now
     }
   }
+
+  const modalPlease = document.getElementById("modalPlease");
+  modalPlease.addEventListener("click", projClickHandler()); // attach an empty click handler for the plain modal
 
   if (params.get('modalfor')) { // look for a ?modalfor=url parameter
     const forUrl = params.get('modalfor'); // save that parameter's value
@@ -27,21 +30,7 @@ const autoRun = () => {
       // TO DO: e.preventDefault() behavior can be hijacked here with custom code
     }}); // launch the modal, with a dummy event so it doesn't error out
   }
-
-  const modalPlease = document.getElementById("modalPlease");
-  modalPlease.addEventListener("click", e => {
-    e.preventDefault();
-    window.alert("Okay, but you have to close it manually! It's not doing anything this time");
-    menu.innerHTML = document.getElementById("modal").innerHTML;
-    menu.firstElementChild.style.width = "27em";
-    body.classList.add("is-menu-visible");
-    const interval = setInterval(() => {
-      if (!body.classList.contains("is-menu-visible")) {
-        modalClosed(interval);
-      }
-    }, 250);
-  });
-
+  
   const techHeader = document.getElementById("techHeader");
   const techCircle = document.getElementById("techCircle");
   const techThing = document.getElementById("techThing");
@@ -72,7 +61,11 @@ const modalClosed = interval => { // restores template modal and clears timer se
 const projClickHandler = url => {
   return async e => {
     e.preventDefault(); // intercept click on project link
-    modalLink.href = url;
+    if (!url) {
+      window.alert("Okay, but you have to close it manually! It's not doing anything this time");
+    } else {
+      modalLink.href = url;
+    }
     menu.innerHTML = modalContents; // replace template's modal with custom modal
     menu.firstElementChild.style.width = "27em";
     body.classList.add('is-menu-visible'); // show modal
@@ -81,6 +74,7 @@ const projClickHandler = url => {
         modalClosed(interval);
       }
     }, 250);
+    if (!url) return;
     const apiUrl = `${url}api/wakeup/skport-click`; // build target URL for wakeup fetch, doesn't matter if real
     // here's the magic:
     const res = await fetch(apiUrl, {mode: 'no-cors'}); // fetch to api, and wait until target is certainly awake
