@@ -1,5 +1,3 @@
-// console.log("test, custom is loaded");
-
 const body = document.body;
 const params = new URLSearchParams(window.location.search.toLowerCase());
 const noWake = params.get('nowake');
